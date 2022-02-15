@@ -1,0 +1,13 @@
+<button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        style="background-color: white; color: black; font-family: 'Raleway', sans-serif; font-size: 15px; font-weight: 600; line-height: 16px; padding: 26px 20px; margin-top: -4px;">
+    TAGS
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    {% for item in tags %}
+    <a class="dropdown-item" href="{{ item.get_absolute_url }}"
+       style="font-family: 'Raleway', sans-serif; font-size: 15px; font-weight: 600; line-height: 5px; padding: 14px 10px;">
+        {{ item.title }}
+    </a>
+    {% endfor %}
+</div>

@@ -1,0 +1,22 @@
+<h2 class="sidebar-title">Popular posts</h2>
+<div class="grid">
+{% for post in posts %}
+    <div class="portfolio-item popular">
+        {% if post.photo %}
+           <a href="{{ post.get_absolute_url }}">
+               <img src="{{ post.photo.url }}" alt="{{ post.title }}" height="75px">
+           </a>
+        {% endif %}
+        <div class="portfolio-text">
+            <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+            <p>
+                By {{ post.author }}
+                <span>|</span>
+                Publication date: {{ post.created_at|date:"j E Y" }}
+                <br>
+                Views: {{ post.views }}
+            </p>
+        </div>
+    </div>
+{% endfor %}
+</div>

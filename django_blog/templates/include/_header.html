@@ -1,0 +1,40 @@
+{% load menu_categories %}
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9" style="padding: 0px; padding-right: 95px; margin-right: 0px;">
+                {% show_menu_categories %}
+            </div>
+
+
+            <div class="col-md-2" style="position: relative; margin: 0px;">
+                <div style="position: absolute; margin: 0px -84px; padding-top: 20px;">
+                    <form action="{% url 'search' %}" method="get">
+                        <input type="text" name="search" placeholder="Search">
+                        <input type="submit" value="Search"
+                               style="margin-top: 2px; ">
+                    </form>
+                </div>
+
+                {% if request.user.is_authenticated %}
+                    <p style="margin-top: 6px; margin-bottom: 0px; margin-left: 200px; width: 100px; font-family: 'Raleway', sans-serif; font-size: 14px; font-weight: 600;">
+                        Hello, {% if user.first_name %} {{ user.first_name }}! {% else %} {{ user.username }}! {% endif %}
+                    </p>
+                    <a class="btn btn-primary" href="{% url 'account_logout' %}" role="button"
+                       style="margin-left: 200px; width: 100px;">Sign Out</a>
+                {% else %}
+                    <span>
+                        <a class="btn btn-primary" href="{% url 'account_login' %}" role="button"
+                           style="margin-bottom: 1px; margin-left: 200px; width: 100px;">
+                            Sign In
+                        </a>
+                        <a class="btn btn-primary" href="{% url 'account_signup' %}" role="button"
+                           style="margin-left: 200px; width: 100px;">
+                            Sign Up
+                        </a>
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</header>

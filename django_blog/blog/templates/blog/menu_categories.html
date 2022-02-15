@@ -1,0 +1,15 @@
+{% load menu_categories %}
+<div class="{{ menu_class }}">
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        {% for item in categories %}
+            <li>
+                <a href="{{ item.get_absolute_url }}">
+                    {{ item.title }}
+                </a>
+            </li>
+        {% endfor %}
+        <li class="dropdown">{% show_menu_tags %}</li>
+    </ul>
+</div>
+
